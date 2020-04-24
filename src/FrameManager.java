@@ -176,11 +176,24 @@ public class FrameManager extends JFrame{
 
  List<Object> yearslist=new ArrayList<Object>();
  public static void main(String[] args){
-		/*try{
-			UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-			 } catch (Exception unused) {
-			        ; // Ignore exception because we can't do anything.  Will use default.
-			   */ // }
+	  
+	    try {
+			javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+
+		    // if you want decorations for frames and dialogs you can put this two lines
+		    //
+			 JFrame.setDefaultLookAndFeelDecorated(true);	// to decorate frames 
+			JDialog.setDefaultLookAndFeelDecorated(true);	// to decorate dialogs 
+		    //
+		    // or put this one line
+		    //
+			// com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true);
+			//
+			// or if you want to use Apple's Panther window decoration
+			//
+			// com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "panther");
+
+	    } catch (Exception e) {}
 	
 	FrameManager fm =new FrameManager();
 	std=new SystemTrayManager(FrameManager.fmPointer); //creating program icon in System Tray
