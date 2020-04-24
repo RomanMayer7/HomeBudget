@@ -1,0 +1,9 @@
+Salary(your month income)/6500
+Rent/1500
+Land Tax/212
+Water/150
+Electricity/360
+Telephone/350
+Transport/430
+Visa(credit)/430
+Committee/100
