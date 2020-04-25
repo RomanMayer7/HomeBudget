@@ -1,21 +1,21 @@
-MS/47.7/food#1
-MS/89.65/food#2
-MS/70.80/food#3
-B&Y/29.39/food#4
-AM:PM/140.53/food#5
-MS/78.85/food#6
-MS/13.95/food#7
-MS/69.10/food#8
-B&Y/143.40/food#9
-B&Y/81.00/food#10
-NBA sunglases/168.00/clothing#11
-B&Y/44.20/food#12
-B&Y/94.62/food#13
-B&Y/88.70/food#14
-SFK/37.21/food#15
-Bakery/15.00/food#16
-MLZ/409.90/clothing#17
-BUG Store(DVD,CD)/124.00/wear#18
-BUG store(CD,DVD)/124.00/computer devices#19
+MS/47.7/Food#1
+MS/89.65/Food#2
+MS/70.80/Food#3
+B&Y/29.39/Food#4
+AM:PM/140.53/Food#5
+MS/78.85/Food#6
+MS/13.95/Food#7
+MS/69.10/Food#8
+B&Y/143.40/Food#9
+B&Y/81.00/Food#10
+NBA sunglases/168.00/Clothing#11
+B&Y/44.20/Food#12
+B&Y/94.62/Food#13
+B&Y/88.70/Food#14
+SFK/37.21/Food#15
+Bakery/15.00/Food#16
+MLZ/409.90/Clothing#17
+BUG Store(DVD,CD)/124.00/Clothing#18
+BUG store(CD,DVD)/124.00/Computer Devices#19
 KZ(capo,strap)/194.33/Music#20
 KZ(golden strings)/139.00/Music#21

@@ -41,13 +41,13 @@ public class monthPanel extends JPanel
 	  List<String[]> mainTableData=new ArrayList<String[]>();
 	  String[][] MainTableData2;
 	  //String[][] MainTableData2Pntr;//pointer to MainTableData2
-	  Object[][] MainTableData={{"Salary(your month income)",0},{"Rent",0},{"Land Tax(arnona)",0},{"Water",0},{"Electricity",0},{"Transport",0},{"Telephone",0},{"Visa(credit)",0}};
+	  Object[][] MainTableData={{"Salary(your month income)",0},{"Rent",0},{"Tax",0},{"Water",0},{"Electricity",0},{"Transportation",0},{"Phone",0},{"Credit Card",0},{"Committee",0}};
 	  List<String[]>purchTableData=new ArrayList<String[]>();
 	  String[][] PurchTableData={{"0","0","0#0"}};
 	  //Object[][] PurchTableData;
 	  String[] MainTableColHeads={"Parameter","Cost"};
 	  String[] PurchTableColHeads={"Purchase","Cost","Type"};
-	  String[] PurchTypes={"wear","food","rest","electronic devices","computer devices","home stuff","alcohol","presents"};
+	  String[] PurchTypes={"Clothing","Food","Rest","Electronic Devices","Media","Home Supplies","Presents","Education","Computer Devices"};
 	  String houseParams[];//parameters list from table used in ComboBox
 	  String SelectedCombo;
 	  static int SelectedID;
@@ -85,11 +85,11 @@ public class monthPanel extends JPanel
 		  { 
 			//initial population of table in case Checkpoint.dat still not exist
 		    String[]house={"Salary(your month income)","0"};
-		    String[] house1={"Rent","0"};String[] house2={"Land Tax","0"}; 
+		    String[] house1={"Rent","0"};String[] house2={"Tax","0"}; 
 		    String[] house3={"Water","0"};String[]house4={"Electricity","0"};
-		    String[]house5={"Telephone","0"};
-		    String[]house6={"Transport","0"};
-		    String[]house7={"Visa(credit)","0"};
+		    String[]house5={"Phone","0"};
+		    String[]house6={"Transportation","0"};
+		    String[]house7={"Credit Card","0"};
 		    
 		    mainTableData.add(house);
 		    mainTableData.add(house1);mainTableData.add(house2);mainTableData.add(house3);
@@ -289,7 +289,7 @@ public class monthPanel extends JPanel
 	    
 	    column1.add(jl);
 	    column1.add(yearID);
-	    JLabel basicsLabel=new JLabel("House and Basics");
+	    JLabel basicsLabel=new JLabel("Housing");
 	    basicsLabel.setFont(new Font(yearID.getFont().getName(),yearID.getFont().getStyle(),15));
 		column1.add(basicsLabel);
         column2.add(monthTotals);

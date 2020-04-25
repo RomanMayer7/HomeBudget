@@ -1,12 +1,12 @@
-clothing
-food
-rest
-electronic devices
-computer devices
-home stuff
-learning
-presents
-tools
+Clothing
+Food
+Rest
+Electronic Devices
+Media
+Home Supplies
+Computer Devices
+Education
+Presents
+Tools
 Art
 Music
-

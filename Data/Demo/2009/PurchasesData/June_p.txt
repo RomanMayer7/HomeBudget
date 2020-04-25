@@ -1,10 +1,10 @@
-BY/89.65/food#1
-MS/47.7/food#2
-MS/68.10/food#3	
-MS/157.40/food#4
-Pub/66/rest#5
-B & Y/85.38/food#6
-M S/157.80/food#7
-B&Y/46.99/food#8
-MS/35.80/food#9
-Rock Concert/220/rest#10
+BY/89.65/Food#1
+MS/47.7/Food#2
+MS/68.10/Food#3	
+MS/157.40/Food#4
+Pub/66/Rest#5
+B & Y/85.38/Food#6
+M S/157.80/Food#7
+B&Y/46.99/Food#8
+MS/35.80/Food#9
+Rock Concert/220/Rest#10

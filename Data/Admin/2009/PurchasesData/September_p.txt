@@ -1,2 +1,2 @@
-Concert/400/rest#1
-Pub/220/rest#2
+Concert/400/Rest#1
+Pub/220/Rest#2

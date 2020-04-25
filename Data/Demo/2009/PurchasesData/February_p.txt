@@ -1,6 +1,6 @@
-MCDonalds/56/food#1
-GPU/1200/computer devices#2
-Vigetables/100/food#3
-Club/50/rest#4
-Addidas Sport/250/clothing#0
-Nokia Navigator/1569/electronic devices#1
+MCDonalds/56/Food#1
+GPU/1200/Computer Devices#2
+Vigetables/100/Food#3
+Club/50/Rest#4
+Addidas Sport/250/Clothing#5
+Nokia Navigator/1569/Electronic Devices#6

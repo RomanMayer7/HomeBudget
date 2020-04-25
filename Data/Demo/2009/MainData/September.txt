@@ -1,9 +1,10 @@
-Salary(your month income)/7700
+Salary(your month income)/9212
 Rent/1500
-Land Tax/212
-Water/150
-Electricity/360
-Telephone/350
-Transport/430
-Visa(credit)/1430
+Tax/212
+Water/132
+Electricity/338
+Phone/311
+Internet/100
+Transportation/523
+Credit Card/438
 Committee/100

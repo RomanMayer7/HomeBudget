@@ -1,12 +1,12 @@
-MS/71.00/food#1
-MS/73.65/food#2
-MS/62.70/food#3
-MS/121.15/food#4
-Bites/37.80/food#5
-Bug/10.00/electronic devices#6
-MS/76.70/food#7
-MS/118.80/food#8
-SF/49.90/home_stuff#9
-MS/108.55/food#10
+MS/71.00/Food#1
+MS/73.65/Food#2
+MS/62.70/Food#3
+MS/121.15/Food#4
+Bites/37.80/Food#5
+Bug/10.00/Electronic Devices#6
+MS/76.70/Food#7
+MS/118.80/Food#8
+SF/49.90/Home Supplies#9
+MS/108.55/Food#10
 Mai-Art/474.50/Art#11
-MS/132.20/food#12
+MS/132.20/Food#12

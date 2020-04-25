@@ -1,5 +1,5 @@
-chocolate/19/food#1
-Samson  mic/600/computer devices#2
-Burgers/79/food#3
-LogiTech Gamepad x2/79/computer devices#4
-camea/130/presents#5
+chocolate/19/Food#1
+Samson  mic/600/Computer Devices#2
+Burgers/79/Food#3
+LogiTech Gamepad x2/79/Computer Devices#4
+camea/130/Presents#5

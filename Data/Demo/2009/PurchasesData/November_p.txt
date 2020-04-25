@@ -1,6 +1,6 @@
-chocolate/19/food#1
-Burgers/79/food#3
-LogiTech Gamepad x2/79/computer devices#4
-camea/130/presents#5
-Pizza/100/food#0
-DVD/200/presents#1
+chocolate/19/Food#1
+Burgers/79/Food#3
+LogiTech Gamepad x2/79/Computer Devices#4
+camea/130/Presents#5
+Pizza/100/Food#6
+DVD/200/Presents#7

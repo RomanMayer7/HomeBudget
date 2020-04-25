@@ -53,11 +53,11 @@ public class totalCalculator extends JFrame
 		 msg=new JLabel("Choose month and press 'Refresh'");
 		 msg2=new JLabel("or press 'Next' to show next month");
 		 monthN=new JLabel(mp.PanelName);
-		 salaryL=new JLabel("Your month Salary:"+mp.MainTableData2[0][1]);
+		 salaryL=new JLabel("Total Income:"+mp.MainTableData2[0][1]);
 		 expenseComputer();
-		 expenseL=new JLabel("The month Expense:"+expense);
+		 expenseL=new JLabel("Total Expense:"+expense);
 		 results=Integer.parseInt(mp.MainTableData2[0][1])-expense;
-		 resultsL=new JLabel("The month Results:"+results);
+		 resultsL=new JLabel("NET:"+results);
 		
 		 JLabel demolabel=new JLabel("demo");
 		 monthN.setFont(new Font(demolabel.getFont().getName(),demolabel.getFont().getStyle(),18));
