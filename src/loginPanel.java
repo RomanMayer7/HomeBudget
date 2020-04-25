@@ -48,7 +48,7 @@ public class loginPanel extends  JInternalFrame
     	  try 
     	    {  //adding program logo image
 			   File imageFile = new File("HomeBudget.jpg");
-			   File imageFile2=new File("SystemTrayIcon2.gif");
+			   File imageFile2=new File("Javasoft.png");
 		       System.out.println(imageFile.exists()+" "+imageFile2.exists());
 		       titleImage= ImageIO.read( imageFile );
 		       logoImage= ImageIO.read( imageFile2 );
@@ -58,14 +58,19 @@ public class loginPanel extends  JInternalFrame
 		  ImageIcon ii=new ImageIcon( titleImage);
 		  ImageIcon ii2=new ImageIcon( logoImage);
 		  //Creating the Label
-		  JLabel jl=new JLabel("Roman Mayerson,2009",ii,JLabel.CENTER);
-		  JLabel jl2=new JLabel("Home Budget",ii2,JLabel.CENTER);
+		  JLabel jl=new JLabel("",ii,JLabel.CENTER);
+		  String str="                                                                                                      ";
+		  JLabel jl2=new JLabel(str,ii2,JLabel.CENTER);
+		  
+		  
     	  setLayout(new FlowLayout());
+    	  
     	  VBox=Box.createVerticalBox();
     	  VBox.add(jl);
-    	  message=new JLabel("Welcome to Home Budget");
+    	  VBox.add(new JLabel("Roman Mayerson,2009"));
+    	  message=new JLabel("        ");
     	  VBox.add(message);
-    	  message2=new JLabel("You can try to start use program with demo user:");
+    	  message2=new JLabel("      ");
     	  VBox.add(message2);
     	  demoB= new JButton("Start Demo");
     	  VBox.add(demoB);
@@ -80,13 +85,26 @@ public class loginPanel extends  JInternalFrame
     	  Box HInnerBox2=Box.createHorizontalBox();
     	  passwordL=new JLabel("Password:");
     	  passwordF=new JPasswordField(8);
+    	  
+    	  passwordF.setPreferredSize(new Dimension(100, 25));
+    	  
+    	  String em_etr1="                                                                                                                                                                               ";
+          String em_etr2="                                                                                                                              ";		  
+    	  HInnerBox1.add(new JLabel(em_etr1));
     	  HInnerBox1.add(passwordL);
     	  HInnerBox1.add(passwordF);
+    	  HInnerBox1.add(new JLabel(em_etr2));
     	  usernameL=new JLabel("Username:");
-    	  usernameF=new JTextField(8);
+    	  usernameF=new JTextField();
+    	  usernameF.setPreferredSize(new Dimension(100, 25));
+    	  
+    	  HInnerBox2.add(new JLabel(em_etr1));
     	  HInnerBox2.add(usernameL);
     	  HInnerBox2.add(usernameF);
+    	  HInnerBox2.add(new JLabel(em_etr2));
     	  remember=new JCheckBox("Remember password for next Logon");
+    	 // HBox.setPreferredSize(new Dimension(100, 70));
+    	  
     	  HBox.add(HInnerBox1);
     	  VBox.add(HInnerBox2);
     	  VBox.add(HBox);
@@ -95,7 +113,8 @@ public class loginPanel extends  JInternalFrame
     	  VBox.add(loginB);
     	  VBox.add(jl2);	
     	  add(VBox);
-    	  setSize(1024,768);
+    	  setSize(840,680);
+    	  setLocation(200,30);
     	  setVisible(true);
     	  notFound=true;
     	  checkbox=false;

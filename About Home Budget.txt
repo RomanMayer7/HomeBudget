@@ -1,6 +1,6 @@
 Home Budget v 1.1 beta
 Development,Programming and Design
-by Roman Mayerzon 
+by Roman Mayerson 
 
 'Home Budget' 
 is crossplatform software based on Java 1.6 technology
