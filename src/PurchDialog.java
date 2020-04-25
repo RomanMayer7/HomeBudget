@@ -10,15 +10,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class PurchDialog extends JDialog{
+public class PurchDialog extends JDialog
+  {
 	monthPanel parentPanel;
 	PurchDialog pd;
 	PurchDialog(final JInternalFrame parent,final monthPanel parentPanel){
-		super(javax.swing.JOptionPane.getFrameForComponent( parent )
-,"Add New Purchase",true);
-   this.parentPanel=parentPanel;
-   pd=this;
-   setSize(600,400);
+		super(javax.swing.JOptionPane.getFrameForComponent( parent ),"Add New Purchase",true);
+		
+    this.parentPanel=parentPanel;
+    pd=this;
+    setSize(600,400);
 	setLayout(new FlowLayout());
 	Box vbox=Box.createVerticalBox();
 	JLabel param = new JLabel("Purchase",JLabel.LEFT);
@@ -30,7 +31,8 @@ public class PurchDialog extends JDialog{
 	final JTextField paramText= new JTextField(10);
 	final JTextField costText = new JTextField(3);
 	save.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
+		public void actionPerformed(ActionEvent ae)
+		  {
 		    // Get the index of all the selected items from the list
 		    int[] selectedIx = parentPanel.typesList.getSelectedIndices();
 		    String[][] args=new String[selectedIx.length][3];
@@ -42,10 +44,10 @@ public class PurchDialog extends JDialog{
 			parentPanel.model2.insertRow(parentPanel.purchTable.getRowCount(),args[i]);
 		    }
 		    parentPanel.PurchTableData=new String [parentPanel.purchTableData.size()][3];
-			for (int i=0;i<parentPanel.PurchTableData.length;i++){
-				parentPanel.PurchTableData[i]=parentPanel.purchTableData.get(i);//renewing data in array from Collection
-				
-			}
+			for (int i=0;i<parentPanel.PurchTableData.length;i++)
+			  {
+				  parentPanel.PurchTableData[i]=parentPanel.purchTableData.get(i);//renewing data in array from Collection	
+			  }
 			parentPanel.saveTable2();
 			setVisible(false);
 			dispose();
@@ -54,10 +56,11 @@ public class PurchDialog extends JDialog{
 	});
 	
 	close.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
-			pd.dispose();
-			pd.setVisible(false);
-		}
+		public void actionPerformed(ActionEvent ae)
+		  {
+			  pd.dispose();
+			  pd.setVisible(false);
+		  }
 		});
 	
 	add(param);

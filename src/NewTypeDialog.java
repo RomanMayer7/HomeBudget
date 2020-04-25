@@ -21,16 +21,21 @@ public class NewTypeDialog extends JDialog {
 	Box hBox;
 	Box vBox;
 	File typesFile;
-	NewTypeDialog(final JInternalFrame parent,String name,final monthPanel mp){
-			super(javax.swing.JOptionPane.getFrameForComponent( parent ),name);
+	
+	NewTypeDialog(final JInternalFrame parent,String name,final monthPanel mp)
+	   {
+		    super(javax.swing.JOptionPane.getFrameForComponent( parent ),name);
+		    
 			NTDpointer=this;
 			this.mp=mp;
 			typesCollect=new ArrayList<String>();
 			listModel = new DefaultListModel();
 			types=new JList(listModel);
-			for(int i=0;i<mp.PurchTypes.length;i++){
-				listModel.addElement(mp.PurchTypes[i]);				
-			}
+			
+			for(int i=0;i<mp.PurchTypes.length;i++)
+			  {
+				 listModel.addElement(mp.PurchTypes[i]);				
+			  }
 			jsp=new JScrollPane(types);
 			newtypeL=new JLabel("Enter New Type:");
 			newtypeF=new JTextField(25);
@@ -56,58 +61,70 @@ public class NewTypeDialog extends JDialog {
 			setVisible(true);
 			
 			createB.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent ae){
-					if(newtypeF.getText().length()>0){
-					listModel.addElement(newtypeF.getText());
-					
-					typesFile=new File("types.txt");
-					if(typesFile.exists()==false){
-						try {
-							typesFile.createNewFile();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
+				public void actionPerformed(ActionEvent ae)
+				  {
+					  if(newtypeF.getText().length()>0)
+					    {
+					      listModel.addElement(newtypeF.getText());
+					      typesFile=new File("types.txt");
+					      if(typesFile.exists()==false)
+					        {
+						      try 
+						        {
+							      typesFile.createNewFile();
+						        } 
+						      catch (IOException e) 
+						       {
+							     // TODO Auto-generated catch block
+							     e.printStackTrace();
+						       }
+					        }
 					//mp.typesCollect.removeAll(typesCollect);
 					mp.typesCollect=new ArrayList<String> ();//reseting collection
 				
-					for(int i=0;i<mp.PurchTypes.length;i++){
-						mp.typesCollect.add(mp.PurchTypes[i]);
-					}
+					for(int i=0;i<mp.PurchTypes.length;i++)
+					   {
+						   mp.typesCollect.add(mp.PurchTypes[i]);
+					   }
+					
 					String newType=newtypeF.getText();
 					mp.typesCollect.add(newType);
 					
 					mp.PurchTypes=new String[mp.typesCollect.size()];
 					
-					for(int i=0;i<mp.typesCollect.size();i++){
-						mp.PurchTypes[i]=mp.typesCollect.get(i);
-					}
+					for(int i=0;i<mp.typesCollect.size();i++)
+					   {
+						   mp.PurchTypes[i]=mp.typesCollect.get(i);
+					   }
 					mp.typesList=new JList(mp.PurchTypes);
 					
-					try {
-						BufferedWriter bw=new BufferedWriter(new FileWriter(typesFile));
-						for(int j=0;j<mp.PurchTypes.length;j++){
-							
-							//bw.write("writing test");
-							bw.write(mp.PurchTypes[j]);
-							bw.newLine();
-							}
-							bw.close();
-							System.out.println("Your file has been written");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					try 
+					   {
+						  BufferedWriter bw=new BufferedWriter(new FileWriter(typesFile));
+						  for(int j=0;j<mp.PurchTypes.length;j++)
+						      {
+							    //bw.write("writing test");
+							    bw.write(mp.PurchTypes[j]);
+							    bw.newLine();
+							  }
+							  bw.close();
+							  System.out.println("Your file has been written");
+					    } 
+					catch (IOException e) 
+					    {
+						  // TODO Auto-generated catch block
+						  e.printStackTrace();
+					    }
 					}
-					
-					}
-					else{
+					else
+					{
 						final JFrame error=new JFrame("Error");
 						error.setLayout(new FlowLayout());
 						error.add(new JLabel("The 'type' must contain at least one character!"));
 						JButton close=new JButton("Close");
 						close.addActionListener(new ActionListener(){
-							public void actionPerformed(ActionEvent ae){
+							public void actionPerformed(ActionEvent ae)
+							{
 								error.dispose();
 								error.setVisible(false);
 							}
@@ -119,64 +136,65 @@ public class NewTypeDialog extends JDialog {
 				}
 			});
 			removeB.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent ae){
-					
-					
+				public void actionPerformed(ActionEvent ae)
+				{	
 					int selected=types.getSelectedIndex();
 					String[] tempArray=new String[(mp.PurchTypes.length)-1];
 					int index=0;
 					//System.out.println("PurchTypes[13]="+mp.PurchTypes[13]+",selected:"+selected);
 					for(int i=0;i<mp.PurchTypes.length;i++)
-					{
+					  {
 						//System.out.println("PurchTypes length:"+mp.PurchTypes.length+",tempArray length:"+tempArray.length);
-					if(i!=selected){
-						tempArray[index]=mp.PurchTypes[i];
-						System.out.println("PurchTypes["+i+"]="+mp.PurchTypes[i]+",tempArray["+index+"]="+tempArray[index]);
+					    if(i!=selected)
+					      {
+						    tempArray[index]=mp.PurchTypes[i];
+						    System.out.println("PurchTypes["+i+"]="+mp.PurchTypes[i]+",tempArray["+index+"]="+tempArray[index]);
 							index++;
-						
-					                }	
-					
-					}
+					      }		
+					   }
 					listModel.removeElementAt(types.getSelectedIndex());
 					
 					mp.PurchTypes=new String[tempArray.length];
 					mp.PurchTypes=tempArray;
-					
 					mp.typesList=new JList(mp.PurchTypes);//updating monthPanel object
 					
 					typesFile=new File("types.txt");
-					if(typesFile.exists()==false){
-						try {
-							typesFile.createNewFile();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-
-					try {
+					if(typesFile.exists()==false)
+					  {
+						  try
+						    {
+							  typesFile.createNewFile();
+						    } catch (IOException e) 
+						    {
+							  // TODO Auto-generated catch block
+							  e.printStackTrace();
+						    }
+					   }
+					try 
+					{
 						BufferedWriter bw=new BufferedWriter(new FileWriter(typesFile));
-						for(int j=0;j<mp.PurchTypes.length;j++){
-							
-							//bw.write("writing test");
-							bw.write(mp.PurchTypes[j]);
-							bw.newLine();
+						for(int j=0;j<mp.PurchTypes.length;j++)
+						    {
+							   //bw.write("writing test");
+							   bw.write(mp.PurchTypes[j]);
+							   bw.newLine();
 							}
 							bw.close();
 							System.out.println("Your file has been written");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					
+					 } 
+					catch (IOException e)
+					 {
+						  // TODO Auto-generated catch block
+						  e.printStackTrace();
+					  }	
 				}
 			});
 			closeB.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent ae){
-					NTDpointer.dispose();
-					NTDpointer.setVisible(false);
-				}
+				public void actionPerformed(ActionEvent ae)
+				   {
+					   NTDpointer.dispose();
+					   NTDpointer.setVisible(false);
+				   }
 			});
 			
 	}

@@ -5,7 +5,8 @@ import java.awt.event.*;
 public class aboutFrame extends JFrame {
 	aboutFrame afPointer;
 	
-	aboutFrame(){
+	aboutFrame()
+	  {
         super("About Home Budget");
         afPointer=this;
 		Box vbox=Box.createVerticalBox();
@@ -51,13 +52,16 @@ public class aboutFrame extends JFrame {
 		vbox.add(label11);
 		vbox.add(label12);
 		add(vbox);
+		
 		JButton close=new JButton("Close");
 		close.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent ae){
+			public void actionPerformed(ActionEvent ae)
+			   {
 				 afPointer.dispose();
 				 afPointer.setVisible(false);
-			}
-		});
+			   }
+		   });
+		
 		add(close);
 		setSize(800,600);
 		setVisible(true);

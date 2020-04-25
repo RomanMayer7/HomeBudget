@@ -1,9 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.*;
-
 import javax.swing.*;
-public class graphFrame extends JFrame{
+
+public class graphFrame extends JFrame
+{
 	monthPanel Mpanel;
 	graphPanel Gpanel;
 	graphFrame gf;
@@ -19,10 +20,11 @@ public class graphFrame extends JFrame{
 	JList ValList;
 	JScrollPane jsp;
 	MainFrame mf;
-	int valSum=0;//stores the values of PurchTable cost integeres which are parsed by type  
-	 static float ParamValues[];
-	 JLabel msg=new JLabel("Chose Parameter and press 'Refresh' to see new Data");
-	graphFrame(final monthPanel mp,String framename){
+	int valSum=0;//stores the values of PurchTable cost integers which are parsed by type  
+	static float ParamValues[];
+	JLabel msg=new JLabel("Chose Parameter and press 'Refresh' to see new Data");
+	graphFrame(final monthPanel mp,String framename)
+	{
 		super(framename);
 		gf=this;
 		setLayout(new BorderLayout());
@@ -31,9 +33,10 @@ public class graphFrame extends JFrame{
 		Mpanel=mp;
 		//System.out.println(mp.houseParams);
 		final DefaultListModel lmodel=new DefaultListModel();
-        for(int i=1;i<mp.houseParams.length-1;i++){
+         for(int i=1;i<mp.houseParams.length-1;i++)
+         {
         	lmodel.addElement(mp.houseParams[i]);
-        }
+         }
 		ValList=new JList(lmodel);
 		ValList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		ValList.setSelectedIndex (0);
@@ -50,20 +53,23 @@ public class graphFrame extends JFrame{
 		comboPanel.setSize(200,200);
 		column.add(comboPanel);
 		rfrsh.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-		if (b2.isSelected())
-		{
-			refreshdata2();
-		}
-		else
-		{
-			refreshdata();
-		}
-		Gpanel.repaint();
+		  public void actionPerformed(ActionEvent e)
+		    {
+		       if (b2.isSelected())
+		         {
+			        refreshdata2();
+		         }
+		       else
+		         {
+			        refreshdata();
+		         }
+		      Gpanel.repaint();
 			}
 		});
+		
 		close.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent ae){
+			public void actionPerformed(ActionEvent ae)
+			{
 				gf.dispose();
 				gf.setVisible(false);
 			}
@@ -83,17 +89,21 @@ public class graphFrame extends JFrame{
 		ParamValues=new float[15];//creating 12 month +2 elements array because of the drawLine from x-coordinates (n+1;n+2)
 		//System.out.println(mf.monthpanels.length);
 		//System.out.println(mf.monthpanels[11].MainTableData2[Mpanel.SelectedID][1]);//test
-		b1.addActionListener(new ActionListener(){ public void actionPerformed(ActionEvent ae){
+		b1.addActionListener(new ActionListener(){ public void actionPerformed(ActionEvent ae)
+		  {
 			lmodel.removeAllElements();
-			  for(int i=1;i<mp.houseParams.length-1;i++){
+			  for(int i=1;i<mp.houseParams.length-1;i++)
+			     {
 		        	lmodel.addElement(mp.houseParams[i]);
-		        }
-		ValList.setSelectedIndex (0);	  
-		refreshdata();
+		         }
+		      ValList.setSelectedIndex (0);	  
+		      refreshdata();
 			}});
+		
 		b2.addActionListener(new ActionListener(){ public void actionPerformed(ActionEvent ae){
 			lmodel.removeAllElements();
-			  for(int i=0;i<mp.PurchTypes.length;i++){
+			  for(int i=0;i<mp.PurchTypes.length;i++)
+			    {
 		        	lmodel.addElement(mp.PurchTypes[i]);
 		        }
 			ValList.setSelectedIndex (0);  
@@ -107,67 +117,67 @@ public class graphFrame extends JFrame{
 			System.out.println(mf.monthpanels[i].MainTableData2[Mpanel.SelectedID][1]);
 			ParamValues[i]=Integer.parseInt(mf.monthpanels[i].MainTableData2[Mpanel.SelectedID][1]);
 		*///	}
-            for(int i=0;i<12;i++){
-			
-			ParamValues[i]=Float.parseFloat(mf.monthpanels[i].MainTableData2[ValList.getSelectedIndex()+1][1]);
-			paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
+            for(int i=0;i<12;i++)
+            {
+			    ParamValues[i]=Float.parseFloat(mf.monthpanels[i].MainTableData2[ValList.getSelectedIndex()+1][1]);
+			    paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
 			}
 
-		    if(b2.isSelected()){
-			
-			for(int i=0;i<12;i++){
-				for(int j=0;j<mf.monthpanels[i].PurchTableData.length;j++){
-				
-				String[] tokens=((String) mf.monthpanels[i].PurchTableData[j][2]).split("#");
-				String purchtype=tokens[0];
-	 
-			  if (Mpanel.PurchTypes[ValList.getSelectedIndex()]==purchtype)   {
-				  
-				  valSum +=Integer.parseInt((String) mf.monthpanels[i].PurchTableData[j][1]);
-			  }  
-		   
+		    if(b2.isSelected())
+		    {
+			  for(int i=0;i<12;i++)
+			   {
+				 for(int j=0;j<mf.monthpanels[i].PurchTableData.length;j++)
+				  {	
+				    String[] tokens=((String) mf.monthpanels[i].PurchTableData[j][2]).split("#");
+				    String purchtype=tokens[0];
+			        if (Mpanel.PurchTypes[ValList.getSelectedIndex()]==purchtype)   
+			        {
+				       valSum +=Integer.parseInt((String) mf.monthpanels[i].PurchTableData[j][1]);
+			        }   
 				}
 				  ParamValues[i]=valSum;
-			}
-	paramName=Mpanel.PurchTypes[ValList.getSelectedIndex()];		
+			   }
+	          paramName=Mpanel.PurchTypes[ValList.getSelectedIndex()];		
 		    }
 		    else{
-	paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
-
+	               paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
+		        }
 		    }
-		    }
-	public void refreshdata(){
-		for(int i=0;i<12;i++){
-			
-			ParamValues[i]=Float.parseFloat(mf.monthpanels[i].MainTableData2[ValList.getSelectedIndex()+1][1]);
-			paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
-			}
-	}
-	public void refreshdata2(){
+	       public void refreshdata()
+	        {
+		      for(int i=0;i<12;i++)
+		      {	
+			     ParamValues[i]=Float.parseFloat(mf.monthpanels[i].MainTableData2[ValList.getSelectedIndex()+1][1]);
+			      paramName=Mpanel.MainTableData2[ValList.getSelectedIndex()+1][0];
+			  }
+	        }
+	       
+	      public void refreshdata2()
+	      {
             valSum=0;
-		for(int i=0;i<12;i++){
-			System.out.println(mf.monthpanels[i].PurchTableData.length);
-			for(int j=0;j<mf.monthpanels[i].PurchTableData.length;j++){
-			
-			String[] tokens=((String) mf.monthpanels[i].PurchTableData[j][2]).split("#");
-			String purchtype=tokens[0];
-            System.out.println(purchtype+"_"+i);
-			System.out.println(Mpanel.PurchTypes[ValList.getSelectedIndex()]+"_"+i);
- 
-		  if (Mpanel.PurchTypes[ValList.getSelectedIndex()].equals(purchtype))   {
-			  //System.out.println("o yeah!");
-			  
-			  valSum +=Float.parseFloat((String) mf.monthpanels[i].PurchTableData[j][1]);
-		  }  
-	   
-			}
+		    for(int i=0;i<12;i++)
+		    {
+			   System.out.println(mf.monthpanels[i].PurchTableData.length);
+			   for(int j=0;j<mf.monthpanels[i].PurchTableData.length;j++)
+			    { 	
+			       String[] tokens=((String) mf.monthpanels[i].PurchTableData[j][2]).split("#");
+			       String purchtype=tokens[0];
+                   System.out.println(purchtype+"_"+i);
+			       System.out.println(Mpanel.PurchTypes[ValList.getSelectedIndex()]+"_"+i);
+		           if (Mpanel.PurchTypes[ValList.getSelectedIndex()].equals(purchtype))
+		            {
+			          //System.out.println("o yeah!");
+			           valSum +=Float.parseFloat((String) mf.monthpanels[i].PurchTableData[j][1]);
+		            }  
+			   }
 			  ParamValues[i]=valSum;
 			  valSum=0;
-		}
-paramName=Mpanel.PurchTypes[ValList.getSelectedIndex()];	
+		    }
+        paramName=Mpanel.PurchTypes[ValList.getSelectedIndex()];	
 		
-	}
+	  }
 		
-	}
+ }
 	
 

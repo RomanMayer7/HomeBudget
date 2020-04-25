@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.awt.event.*;
+
+
 public class FrameManager extends JFrame{
     static SystemTrayManager std;
     static FrameManager fmPointer,fm;
@@ -34,57 +36,64 @@ public class FrameManager extends JFrame{
 	public static JDesktopPane desk;
 	int currentFrame;
 	BufferedImage image;
+	
 	FrameManager(){
-	super("Home Budget");
-	fmPointer=this;
-	fm=this;
-	//Create a file chooser
-	 chooser = new JFileChooser();
-	bar=new JMenuBar();
-	year=new JMenu("Year");
-	createNew=new JMenuItem("Create New Year Data");
-	createNew.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
-			createNewDialog newDialog=new createNewDialog(fmPointer,"Create New Year Data",fmPointer);
-			newDialog.setVisible(true);
-			
-		}
-	});
-	openExisted=new JMenuItem("Open Existed Data(Year's List)");
-	openExisted.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
-			yearListDialog openDialog =new yearListDialog(fmPointer,"Year's List",userID);
-			openDialog.setVisible(true);
-			
-		}
-	});
-	program=new JMenu("Program");
-	logout=new JMenuItem("Logout or Switch User");
-	logout.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
-			fm.remove(FrameManager.desk);
-			desk = new JDesktopPane();//reconstructing desk(JDesktopPane)
-			lp=new loginPanel(fmPointer);
-			fm.add(desk);
-		    FrameManager.desk.add(lp);//adding loginPanel to the desk
-		}
+		
+	   super("Home Budget");
+	   
+	   fmPointer=this;
+	   fm=this;
+	   //Create a file chooser
+	   chooser = new JFileChooser();
+	   bar=new JMenuBar();
+	   year=new JMenu("Year");
+	   createNew=new JMenuItem("Create New Year Data");
+	 
+	   createNew.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent ae){
+			 createNewDialog newDialog=new createNewDialog(fmPointer,"Create New Year Data",fmPointer);
+			 newDialog.setVisible(true);
+		  }
+	   });
+	 
+	   openExisted=new JMenuItem("Open Existed Data(Year's List)");
+	
+	   openExisted.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ae){
+			 yearListDialog openDialog =new yearListDialog(fmPointer,"Year's List",userID);
+			 openDialog.setVisible(true);	
+		  }
+	   });
+	
+	   program=new JMenu("Program");
+	   logout=new JMenuItem("Logout or Switch User");
+	   logout.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ae){
+			  fm.remove(FrameManager.desk);
+			  desk = new JDesktopPane();//reconstructing desk(JDesktopPane)
+		      lp=new loginPanel(fmPointer);
+			  fm.add(desk);
+		      FrameManager.desk.add(lp);//adding loginPanel to the desk
+		   }
 	  	});
-	exit=new JMenuItem("Quit Program");
-	exit.addActionListener(new ActionListener(){
-		public void actionPerformed( ActionEvent ae){
-			fmPointer.dispose();
-			fmPointer.setVisible(false);
-			std.tray.remove(std.trayIcon);
-			
-		}
-	});
-	data=new JMenu("User Data");
-	importd=new JMenuItem("Import User Data");
-	exportd=new JMenuItem("Export User Data");
-	importd.addActionListener(new ActionListener(){
+	   
+	   exit=new JMenuItem("Quit Program");
+	   exit.addActionListener(new ActionListener(){
+	    	public void actionPerformed( ActionEvent ae){
+			  fmPointer.dispose();
+			  fmPointer.setVisible(false);
+			  std.tray.remove(std.trayIcon);			
+		   }
+	    });
+	      
+	   data=new JMenu("User Data");
+	   importd=new JMenuItem("Import User Data");
+	   exportd=new JMenuItem("Export User Data");
+	   
+	   importd.addActionListener(new ActionListener(){
 			 public void actionPerformed(ActionEvent ae){
 				 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			        int returnVal = chooser.showOpenDialog(FrameManager.this);
+			     int returnVal = chooser.showOpenDialog(FrameManager.this);
 			        if (returnVal == JFileChooser.APPROVE_OPTION) {
 			            File file = chooser.getSelectedFile();
 			            System.out.println("choosed:"+file);
@@ -93,11 +102,12 @@ public class FrameManager extends JFrame{
 			            Scanner s = new Scanner(sfile);
 			            s.useDelimiter("[\\\\]");
 			            String token;
-			            do {
-			            	
-			            token = s.next();
+			            
+			            do {		            	
+     		            token = s.next();
 			            System.out.println("found " + token);
 			            } while (s.hasNext());
+			            
 			            //This is where a real application would open the file.
 			           //String tokenizer[]=sfile.split("\\"); 
 			          // int tokensLength=tokenizer.length;
@@ -111,89 +121,92 @@ public class FrameManager extends JFrame{
 			           //performing copying
 			           CopyDirectory cd=new CopyDirectory();
 			           try {
-						cd.copyDirectory(file, newDir);
-					} catch (IOException e) {
+						cd.copyDirectory(file, newDir);}
+			           catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					   }
 			        }				
-		
-			 }});
-	exportd.addActionListener(new ActionListener(){
-		 public void actionPerformed(ActionEvent ae){
-			 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			   }});
+	   
+	     exportd.addActionListener(new ActionListener(){
+		     public void actionPerformed(ActionEvent ae){
+			    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		        int returnVal = chooser.showSaveDialog(FrameManager.this);
 		        if (returnVal == JFileChooser.APPROVE_OPTION) {
 		            File file = chooser.getSelectedFile();
 		            System.out.println("choosed to save:"+file);
 		            //This is where a application would open the file.
 		            File dest=new File(file.toString()+"/"+userID );
-		            if(dest.exists()==false){
-		            	dest.mkdir();
-		            }
+		            if(dest.exists()==false)
+		              {
+		            	 dest.mkdir();
+		              } 
 		            File source=new File("Data/"+userID);
-		           CopyDirectory cd=new CopyDirectory();
-		           try {
-					cd.copyDirectory(source, dest);
-				} catch (IOException e) {
+		            CopyDirectory cd=new CopyDirectory();
+		            try {
+					      cd.copyDirectory(source, dest);
+				        } 
+		            catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-		        }				
+				    }
+		          }				
+		         }});
 	
-		 }});
-	
-	data.add(importd);
-	data.add(exportd);
-	year.add(createNew);
-	year.add(openExisted);
-	program.add(logout);
-	about=new JMenuItem("About HomeBudget");
-	about.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent ae){
+	      data.add(importd);
+          data.add(exportd);
+	      year.add(createNew);
+	      year.add(openExisted);
+	      program.add(logout);
+	      about=new JMenuItem("About HomeBudget");
+	      
+	      about.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent ae){
 			//System.out.println("About");
-			aboutFrame af=new aboutFrame();	
-		}
-	});
-	program.add(about);
-	program.add(exit);
-	bar.add(program);
-	bar.add(year);
-	bar.add(data);
-	this.setJMenuBar(bar);
+			   aboutFrame af=new aboutFrame();	
+		          }
+	               });
+	      
+	      program.add(about);
+	      program.add(exit);
+	      bar.add(program);
+	      bar.add(year);
+	      bar.add(data);
+	      this.setJMenuBar(bar);
 	
-	desk = new JDesktopPane();
-	add(desk);
-	Locale locale=Locale.UK;
-	date=new Date();
-	dateformat=DateFormat.getDateInstance(DateFormat.DEFAULT,locale);
-	current_date=dateformat.format(date);
-	System.out.println(current_date);
-	dateparse=current_date.split("-");
-	current_year=dateparse[2];
-
+	      desk = new JDesktopPane();
+	      add(desk);
+	      
+	      Locale locale=Locale.UK;
+	      
+	      date=new Date();
+	      dateformat=DateFormat.getDateInstance(DateFormat.DEFAULT,locale);
+	      current_date=dateformat.format(date);	      
+	      System.out.println(current_date);
+	      dateparse=current_date.split("-");
+	      current_year=dateparse[2];
 	}
 
  List<Object> yearslist=new ArrayList<Object>();
  public static void main(String[] args){
 	  
 	    try {
-			javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+		    	javax.swing.UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
 
-		    // if you want decorations for frames and dialogs you can put this two lines
-		    //
-			 JFrame.setDefaultLookAndFeelDecorated(true);	// to decorate frames 
-			JDialog.setDefaultLookAndFeelDecorated(true);	// to decorate dialogs 
-		    //
-		    // or put this one line
-		    //
-			// com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true);
-			//
-			// or if you want to use Apple's Panther window decoration
-			//
-			// com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "panther");
-
-	    } catch (Exception e) {}
+		        // if you want decorations for frames and dialogs you can put this two lines
+		        //
+			         JFrame.setDefaultLookAndFeelDecorated(true);	// to decorate frames 
+			         JDialog.setDefaultLookAndFeelDecorated(true);	// to decorate dialogs 
+		        //
+		        // or put this one line
+		        //
+		     	// com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true);
+			    //
+			    // or if you want to use Apple's Panther window decoration
+			    //
+			    // com.birosoft.liquid.LiquidLookAndFeel.setLiquidDecorations(true, "panther");
+	         } catch (Exception e) {}
 	
 	FrameManager fm =new FrameManager();
 	std=new SystemTrayManager(FrameManager.fmPointer); //creating program icon in System Tray
@@ -202,12 +215,12 @@ public class FrameManager extends JFrame{
     FrameManager.desk.add(lp);//adding loginPanel to the desk
 	fm.setSize(1200, 768);
 	fm.setVisible(true);
-
-	
-}
- void startProgram(){
-	 System.out.println("userd:"+fm.userID+",year:"+fm.current_year);
-	  mf=new MainFrame(fm.userID,fm.current_year);
+  }
+ 
+    void startProgram()
+    {
+	    System.out.println("userd:"+fm.userID+",year:"+fm.current_year);
+	    mf=new MainFrame(fm.userID,fm.current_year);
 		mf.setSize(1200, 768);
 		mf.setVisible(true);
 		fm.remove(FrameManager.desk);
@@ -217,5 +230,5 @@ public class FrameManager extends JFrame{
 		//fm.setSize(1100, 768);
 		//fm.setVisible(true);
 		//
- }
+     }
 }
