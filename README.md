@@ -4,12 +4,14 @@
 
 'Home Budget' 
 is crossplatform software based on Java 1.6 technology
-It provides database and set of  visual tools for tracking an personal home budget
+It provides simple database and set of  visual tools for tracking an personal home budget
 
 *You can create your own data types in order to  sort your data by them
 *You can use graphs and tables for analyzing your incomes and outcomes
 *The program have multiuser interface
 *You can import and export the user data into and from the program
+
+Video Demo Link: https://www.youtube.com/watch?v=jwVPnjDDfxk
 
 In Order to install alternative Look and Fill for the Application
 
